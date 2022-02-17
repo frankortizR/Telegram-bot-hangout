@@ -4,6 +4,7 @@ from winsound import MB_OK
 from telegram import ForceReply, Update
 from telegram.ext import  CallbackContext
 from mabot import TIME_OLD_STOP_RECORD, TIME_NEW_STOP_RECORD
+from env import BOT_TOKEN
 import telegram
 import pyautogui as pa
 import Security as Sec
@@ -60,7 +61,7 @@ def fin_command(update: Update, context: CallbackContext) -> None:
     pa.hotkey('alt','shift', 'S')
     update.message.reply_text('Okasss!')
     chat_id = update.message.chat_id
-    bot = telegram.Bot(token="5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
+    bot = telegram.Bot(token=BOT_TOKEN)
     bot.sendVideo(chat_id = chat_id, video = open(RECORDS_DIR +'\\'+  os.listdir(RECORDS_DIR)[len(os.listdir(RECORDS_DIR))-1], 'rb'))
     #messagebox.showinfo("Telegram bot", "Video sent")
     ut.theNotitifacion("Telegram bot", "Recording sent")
@@ -86,7 +87,7 @@ def img_command(update: Update, context: CallbackContext) -> None:
     chat_id = update.message.chat_id
     if Sec.CheckingRath(update, chat_id) == True:
         pa.screenshot('ma_screenshot.png')
-        bot = telegram.Bot(token="5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
+        bot = telegram.Bot(token=BOT_TOKEN)
         bot.sendPhoto(chat_id = chat_id, photo = open('ma_screenshot.png', 'rb'))
         #bot.sendPhoto(chat_id = chat_id, photo = open(WALLPAPER_DIR +'\\'+  os.listdir(WALLPAPER_DIR)[len(os.listdir(WALLPAPER_DIR))-1], 'rb'))
         ut.theNotitifacion("Telegram bot", "Image sent")
@@ -97,7 +98,7 @@ def sendRecording_command(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /record is issued."""
     chat_id = update.message.chat_id
     if Sec.CheckingRath(update, chat_id) == True:
-        bot = telegram.Bot(token="5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
+        bot = telegram.Bot(token=BOT_TOKEN)
         acces_recors_dir = os.listdir(RECORDS_DIR)
         bot.sendVideo(chat_id = chat_id, video = open(RECORDS_DIR +'\\'+  acces_recors_dir[len(acces_recors_dir)-1], 'rb'))
         ut.theNotitifacion("Telegram bot", "Recording sent")
@@ -111,7 +112,7 @@ def mute_command(update: Update, context: CallbackContext) -> None:
         pa.hotkey('ctrl', 'd')
         sleep(0.5)
         pa.screenshot('ma_screenshot.png')
-        bot = telegram.Bot(token="5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
+        bot = telegram.Bot(token=BOT_TOKEN)
         bot.sendPhoto(chat_id = chat_id, photo = open('ma_screenshot.png', 'rb'))
     
 

@@ -1,2 +1,5 @@
 #Variables de entorno
-.env
+Varaibles.txt
+BOT_TOKEN.env
+#python con varialbles de entorno
+env.py

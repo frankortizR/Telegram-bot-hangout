@@ -14,13 +14,13 @@ Basic Echobot example, repeats messages.
 Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
-from multiprocessing import context
-from turtle import update
+
 import call_controls as cc
 import logging
 import telegram
-from telegram import Update, Bot, bot
+from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from env import BOT_TOKEN
 
 # Enable logging
 logging.basicConfig(
@@ -46,8 +46,8 @@ def tragas(update: Update, context: CallbackContext) -> None:
 def main() -> None:
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
-    updater = Updater("5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
-    bot = telegram.Bot(token="5217446941:AAH9hPdccRpnjE__BmeCeTVUOip98_gfCS4")
+    updater = Updater(BOT_TOKEN)
+    bot = telegram.Bot(token=BOT_TOKEN)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher
